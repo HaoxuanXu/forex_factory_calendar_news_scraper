@@ -14,7 +14,7 @@ def scrape(query: str, output_prefix: str):
         driver = webdriver.Chrome()
     except:
         print("AF: No Chrome webdriver installed")
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        driver = webdriver.Chrome("bin/chromedriver")
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
     table = driver.find_element(By.CLASS_NAME, "calendar__table")

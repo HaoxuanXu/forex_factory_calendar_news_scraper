@@ -11,56 +11,70 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def scrape(query: str, output_prefix: str, driver):
+    try:
+        # Load the calendar page
+        driver.get(f"https://www.forexfactory.com/calendar?month={query}")
 
-    driver.get(f"https://www.forexfactory.com/calendar?month={query}")
-    wait = WebDriverWait(driver, 30)  # Wait up to 30 seconds
-    table = wait.until(
-        EC.presence_of_element_located((By.CLASS_NAME, "calendar__table"))
-    )
+        # Wait for the calendar table to be present
+        wait = WebDriverWait(driver, 30)
+        table = wait.until(
+            EC.presence_of_element_located((By.CLASS_NAME, "calendar__table"))
+        )
 
-    data = []
-    # Scroll down to the end of the page
-    while True:
-        # Record the current scroll position
-        before_scroll = driver.execute_script("return window.pageYOffset;")
+        # Initialize a list to store scraped data
+        data = []
 
-        # Scroll down a fixed amount
-        driver.execute_script("window.scrollTo(0, window.pageYOffset + 500);")
+        # Scroll until the bottom of the page is reached
+        while True:
+            # Record the current scroll position
+            before_scroll = driver.execute_script("return window.pageYOffset;")
 
-        # Wait for a short moment to allow content to load
-        time.sleep(2)
+            # Scroll down by a fixed amount
+            driver.execute_script("window.scrollTo(0, window.pageYOffset + 500);")
 
-        # Record the new scroll position
-        after_scroll = driver.execute_script("return window.pageYOffset;")
+            # Wait for new content to load (use WebDriverWait to check changes)
+            wait.until(
+                lambda d: driver.execute_script("return window.pageYOffset;")
+                != before_scroll
+            )
 
-        # If the scroll position hasn't changed, we've reached the end of the page
-        if before_scroll == after_scroll:
-            break
+            # Record the new scroll position
+            after_scroll = driver.execute_script("return window.pageYOffset;")
 
-    # Now that we've scrolled to the end, collect the data
-    for row in table.find_elements(By.TAG_NAME, "tr"):
-        row_data = []
-        for element in row.find_elements(By.TAG_NAME, "td"):
-            class_name = element.get_attribute("class")
-            if class_name in ALLOWED_ELEMENT_TYPES:
-                if element.text:
-                    row_data.append(element.text)
-                elif "calendar__impact" in class_name:
-                    impact_elements = element.find_elements(By.TAG_NAME, "span")
-                    for impact in impact_elements:
-                        impact_class = impact.get_attribute("class")
-                        color = ICON_COLOR_MAP[impact_class]
-                    if color:
-                        row_data.append(color)
-                    else:
-                        row_data.append("impact")
+            # Break if no further scrolling is possible
+            if before_scroll == after_scroll:
+                break
 
-        if len(row_data):
-            data.append(row_data)
+        # Collect data from the table rows
+        for row in table.find_elements(By.TAG_NAME, "tr"):
+            row_data = []
+            for element in row.find_elements(By.TAG_NAME, "td"):
+                class_name = element.get_attribute("class")
+                if class_name in ALLOWED_ELEMENT_TYPES:
+                    if element.text:
+                        row_data.append(element.text)
+                    elif "calendar__impact" in class_name:
+                        # Handle impact icons
+                        impact_elements = element.find_elements(By.TAG_NAME, "span")
+                        for impact in impact_elements:
+                            impact_class = impact.get_attribute("class")
+                            color = ICON_COLOR_MAP.get(impact_class, "impact")
+                            row_data.append(color)
+                        else:
+                            row_data.append("impact")
 
-    reformat_scraped_data(data, output_prefix)
+            if row_data:  # Add non-empty rows to data
+                data.append(row_data)
 
-    driver.quit()
+        # Reformat the scraped data and save
+        reformat_scraped_data(data, output_prefix)
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    finally:
+        # Ensure the driver is closed even if an error occurs
+        driver.quit()
 
 
 if __name__ == "__main__":

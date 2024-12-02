@@ -13,7 +13,7 @@ from selenium.webdriver.support import expected_conditions as EC
 def scrape(query: str, output_prefix: str, driver):
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
-    wait = WebDriverWait(driver, 10)  # Wait up to 10 seconds
+    wait = WebDriverWait(driver, 30)  # Wait up to 30 seconds
     table = wait.until(
         EC.presence_of_element_located((By.CLASS_NAME, "calendar__table"))
     )
@@ -84,15 +84,5 @@ if __name__ == "__main__":
         service=Service("bin/chromedriver"), options=chrome_options
     )
 
-    cur_month_date: date = date.today()
-    next_month_date: date = cur_month_date + relativedelta(months=1)
-
-    cur_month_query_str: str = (
-        f"{cur_month_date.strftime('%b').lower()}.{cur_month_date.year}"
-    )
-    next_month_query_str: str = (
-        f"{next_month_date.strftime('%b').lower()}.{next_month_date.year}"
-    )
-
-    scrape(cur_month_query_str, "current_month", driver)
-    scrape(next_month_query_str, "next_month", driver)
+    scrape("current", "current_month", driver)
+    scrape("next", "next_month", driver)

@@ -6,12 +6,17 @@ from utils import reformat_scraped_data
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def scrape(query: str, output_prefix: str, driver):
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
-    table = driver.find_element(By.CLASS_NAME, "calendar__table")
+    wait = WebDriverWait(driver, 10)  # Wait up to 10 seconds
+    table = wait.until(
+        EC.presence_of_element_located((By.CLASS_NAME, "calendar__table"))
+    )
 
     data = []
     # Scroll down to the end of the page

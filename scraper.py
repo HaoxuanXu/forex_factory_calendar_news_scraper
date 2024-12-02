@@ -55,6 +55,8 @@ def scrape(query: str, output_prefix: str, driver):
 
     reformat_scraped_data(data, output_prefix)
 
+    driver.quit()
+
 
 if __name__ == "__main__":
 

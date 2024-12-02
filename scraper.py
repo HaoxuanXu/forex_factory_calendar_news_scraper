@@ -8,6 +8,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def scrape(query: str, output_prefix: str, driver):
 
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.common.by import By
+
+        driver = webdriver.Chrome()
+    except:
+        print("AF: No Chrome webdriver installed")
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
     table = driver.find_element(By.CLASS_NAME, "calendar__table")
 
@@ -53,6 +62,8 @@ def scrape(query: str, output_prefix: str, driver):
 
     reformat_scraped_data(data, output_prefix)
 
+    driver.quit()
+
 
 if __name__ == "__main__":
     cur_month_date: date = date.today()
@@ -64,15 +75,6 @@ if __name__ == "__main__":
     next_month_query_str: str = (
         f"{next_month_date.strftime('%b').lower()}.{next_month_date.year}"
     )
-
-    try:
-        from selenium import webdriver
-        from selenium.webdriver.common.by import By
-
-        driver = webdriver.Chrome()
-    except:
-        print("AF: No Chrome webdriver installed")
-        driver = webdriver.Chrome(ChromeDriverManager().install())
 
     scrape(cur_month_query_str, f"current_month_{cur_month_date.year}")
     scrape(next_month_query_str, f"next_month_{next_month_date.year}")

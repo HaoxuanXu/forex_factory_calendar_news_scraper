@@ -68,9 +68,6 @@ if __name__ == "__main__":
     chrome_options.binary_location = (
         "chrome-linux64/chrome-linux64/chrome"  # Adjust the path
     )
-    chrome_options.add_argument("--headless")  # Run without GUI
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
 
     driver = webdriver.Chrome(
         service=Service("bin/chromedriver"), options=chrome_options

@@ -6,15 +6,7 @@ from utils import reformat_scraped_data
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def scrape(query: str, output_prefix: str):
-    try:
-        from selenium import webdriver
-        from selenium.webdriver.common.by import By
-
-        driver = webdriver.Chrome()
-    except:
-        print("AF: No Chrome webdriver installed")
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+def scrape(query: str, output_prefix: str, driver):
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
     table = driver.find_element(By.CLASS_NAME, "calendar__table")
@@ -73,5 +65,14 @@ if __name__ == "__main__":
         f"{next_month_date.strftime('%b').lower()}.{next_month_date.year}"
     )
 
-    scrape(cur_month_query_str, "current_month")
-    scrape(next_month_query_str, "next_month")
+    try:
+        from selenium import webdriver
+        from selenium.webdriver.common.by import By
+
+        driver = webdriver.Chrome()
+    except:
+        print("AF: No Chrome webdriver installed")
+        driver = webdriver.Chrome(ChromeDriverManager().install())
+
+    scrape(cur_month_query_str, f"current_month_{cur_month_date.year}")
+    scrape(next_month_query_str, f"next_month_{next_month_date.year}")

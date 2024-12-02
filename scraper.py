@@ -84,10 +84,16 @@ if __name__ == "__main__":
 
     # Set up Chrome options
     chrome_options = Options()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.binary_location = (
-        "chrome-linux64/chrome-linux64/chrome"  # Adjust the path
-    )
+    chrome_options.add_argument("--no-sandbox")  # Avoid sandboxing restrictions
+    chrome_options.add_argument("--disable-dev-shm-usage")  # Use /tmp for shared memory
+    chrome_options.add_argument("--disable-gpu")  # Disable GPU rendering
+    chrome_options.add_argument(
+        "--remote-debugging-port=9222"
+    )  # Enable remote debugging
+    chrome_options.add_argument(
+        "--disable-software-rasterizer"
+    )  # Avoid crashing in virtual environments
+    chrome_options.binary_location = "chrome-linux64/chrome-linux64/chrome"
 
     driver = webdriver.Chrome(
         service=Service("bin/chromedriver"), options=chrome_options

@@ -1,0 +1,71 @@
+date,time,currency,impact,event
+Dec 2,10:00am,USD,red,ISM Manufacturing PMI
+Dec 3,2:30am,CHF,red,CPI m/m
+Dec 3,10:00am,USD,red,JOLTS Job Openings
+Dec 3,7:30pm,AUD,red,GDP q/q
+Dec 4,4:00am,GBP,red,BOE Gov Bailey Speaks
+Dec 4,8:15am,USD,red,ADP Non-Farm Employment Change
+Dec 4,10:00am,USD,red,ISM Services PMI
+Dec 4,1:45pm,USD,red,Fed Chair Powell Speaks
+Dec 5,8:30am,USD,red,Unemployment Claims
+Dec 6,8:30am,CAD,red,Employment Change
+Dec 6,8:30am,CAD,red,Unemployment Rate
+Dec 6,8:30am,USD,red,Average Hourly Earnings m/m
+Dec 6,8:30am,USD,red,Non-Farm Employment Change
+Dec 6,8:30am,USD,red,Unemployment Rate
+Dec 9,10:30pm,AUD,red,Cash Rate
+Dec 9,10:30pm,AUD,red,RBA Rate Statement
+Dec 11,8:30am,USD,red,Core CPI m/m
+Dec 11,8:30am,USD,red,CPI m/m
+Dec 11,8:30am,USD,red,CPI y/y
+Dec 11,9:45am,CAD,red,BOC Rate Statement
+Dec 11,9:45am,CAD,red,Overnight Rate
+Dec 11,10:30am,CAD,red,BOC Press Conference
+Dec 11,7:30pm,AUD,red,Employment Change
+Dec 11,7:30pm,AUD,red,Unemployment Rate
+Dec 12,2:00am,GBP,red,GDP m/m
+Dec 12,3:30am,CHF,red,SNB Monetary Policy Assessment
+Dec 12,3:30am,CHF,red,SNB Policy Rate
+Dec 12,4:00am,CHF,red,SNB Press Conference
+Dec 12,8:15am,EUR,red,Main Refinancing Rate
+Dec 12,8:15am,EUR,red,Monetary Policy Statement
+Dec 12,8:30am,USD,red,Core PPI m/m
+Dec 12,8:30am,USD,red,PPI m/m
+Dec 12,8:30am,USD,red,Unemployment Claims
+Dec 12,8:45am,EUR,red,ECB Press Conference
+Dec 16,3:15am,EUR,red,French Flash Manufacturing PMI
+Dec 16,3:15am,EUR,red,French Flash Services PMI
+Dec 16,3:30am,EUR,red,German Flash Manufacturing PMI
+Dec 16,3:30am,EUR,red,German Flash Services PMI
+Dec 16,4:30am,GBP,red,Flash Manufacturing PMI
+Dec 16,4:30am,GBP,red,Flash Services PMI
+Dec 16,9:45am,USD,red,Flash Manufacturing PMI
+Dec 16,9:45am,USD,red,Flash Services PMI
+Dec 17,2:00am,GBP,red,Claimant Count Change
+Dec 17,8:30am,CAD,red,CPI m/m
+Dec 17,8:30am,CAD,red,Median CPI y/y
+Dec 17,8:30am,CAD,red,Trimmed CPI y/y
+Dec 17,8:30am,USD,red,Core Retail Sales m/m
+Dec 17,8:30am,USD,red,Retail Sales m/m
+Dec 18,2:00am,GBP,red,CPI y/y
+Dec 18,2:00pm,USD,red,Federal Funds Rate
+Dec 18,2:00pm,USD,red,FOMC Economic Projections
+Dec 18,2:00pm,USD,red,FOMC Statement
+Dec 18,2:30pm,USD,red,FOMC Press Conference
+Dec 18,4:45pm,NZD,red,GDP q/q
+Dec 18,Tentative,JPY,red,BOJ Policy Rate
+Dec 18,Tentative,JPY,red,Monetary Policy Statement
+Dec 19,Tentative,JPY,red,BOJ Press Conference
+Dec 19,7:00am,GBP,red,Monetary Policy Summary
+Dec 19,7:00am,GBP,red,MPC Official Bank Rate Votes
+Dec 19,7:00am,GBP,red,Official Bank Rate
+Dec 19,8:30am,USD,red,Final GDP q/q
+Dec 19,8:30am,USD,red,Unemployment Claims
+Dec 20,2:00am,GBP,red,Retail Sales m/m
+Dec 20,8:30am,CAD,red,Core Retail Sales m/m
+Dec 20,8:30am,CAD,red,Retail Sales m/m
+Dec 20,8:30am,USD,red,Core PCE Price Index m/m
+Dec 23,8:30am,CAD,red,GDP m/m
+Dec 23,10:00am,USD,red,CB Consumer Confidence
+Dec 26,8:30am,USD,red,Unemployment Claims
+Dec 30,8:30pm,CNY,red,Manufacturing PMI

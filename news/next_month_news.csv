@@ -1,0 +1,61 @@
+date,time,currency,impact,event
+Jan 2,8:30am,USD,red,Unemployment Claims
+Jan 2,10:00am,USD,red,ISM Manufacturing PMI
+Jan 2,8:30pm,CNY,red,Manufacturing PMI
+Jan 6,All Day,EUR,red,German Prelim CPI m/m
+Jan 6,2:30am,CHF,red,CPI m/m
+Jan 6,10:00am,USD,red,ISM Services PMI
+Jan 6,7:30pm,AUD,red,CPI y/y
+Jan 7,10:00am,USD,red,JOLTS Job Openings
+Jan 8,8:15am,USD,red,ADP Non-Farm Employment Change
+Jan 8,2:00pm,USD,red,FOMC Meeting Minutes
+Jan 9,8:30am,USD,red,Unemployment Claims
+Jan 10,8:30am,USD,red,Average Hourly Earnings m/m
+Jan 10,8:30am,USD,red,Non-Farm Employment Change
+Jan 10,8:30am,USD,red,Unemployment Rate
+Jan 14,8:30am,USD,red,Core PPI m/m
+Jan 14,8:30am,USD,red,PPI m/m
+Jan 15,2:00am,GBP,red,CPI y/y
+Jan 15,8:30am,USD,red,Core CPI m/m
+Jan 15,8:30am,USD,red,CPI m/m
+Jan 15,8:30am,USD,red,CPI y/y
+Jan 15,7:30pm,AUD,red,Employment Change
+Jan 15,7:30pm,AUD,red,Unemployment Rate
+Jan 16,2:00am,GBP,red,GDP m/m
+Jan 16,8:30am,USD,red,Core Retail Sales m/m
+Jan 16,8:30am,USD,red,Retail Sales m/m
+Jan 16,8:30am,USD,red,Unemployment Claims
+Jan 17,2:00am,GBP,red,Retail Sales m/m
+Jan 21,2:00am,GBP,red,Claimant Count Change
+Jan 23,8:30am,USD,red,Unemployment Claims
+Jan 23,Tentative,JPY,red,BOJ Policy Rate
+Jan 23,Tentative,JPY,red,Monetary Policy Statement
+Jan 23,Tentative,JPY,red,BOJ Outlook Report
+Jan 24,Tentative,JPY,red,BOJ Press Conference
+Jan 24,3:15am,EUR,red,French Flash Manufacturing PMI
+Jan 24,3:15am,EUR,red,French Flash Services PMI
+Jan 24,3:30am,EUR,red,German Flash Manufacturing PMI
+Jan 24,3:30am,EUR,red,German Flash Services PMI
+Jan 24,4:30am,GBP,red,Flash Manufacturing PMI
+Jan 24,4:30am,GBP,red,Flash Services PMI
+Jan 24,9:45am,USD,red,Flash Manufacturing PMI
+Jan 24,9:45am,USD,red,Flash Services PMI
+Jan 28,10:00am,USD,red,CB Consumer Confidence
+Jan 28,7:30pm,AUD,red,CPI q/q
+Jan 28,7:30pm,AUD,red,CPI y/y
+Jan 28,7:30pm,AUD,red,Trimmed Mean CPI q/q
+Jan 29,9:45am,CAD,red,BOC Monetary Policy Report
+Jan 29,9:45am,CAD,red,BOC Rate Statement
+Jan 29,9:45am,CAD,red,Overnight Rate
+Jan 29,10:30am,CAD,red,BOC Press Conference
+Jan 29,2:00pm,USD,red,Federal Funds Rate
+Jan 29,2:00pm,USD,red,FOMC Statement
+Jan 29,2:30pm,USD,red,FOMC Press Conference
+Jan 30,8:15am,EUR,red,Main Refinancing Rate
+Jan 30,8:15am,EUR,red,Monetary Policy Statement
+Jan 30,8:30am,USD,red,Advance GDP q/q
+Jan 30,8:30am,USD,red,Unemployment Claims
+Jan 30,8:45am,EUR,red,ECB Press Conference
+Jan 31,2:29am,EUR,red,German Prelim CPI m/m
+Jan 31,8:30am,USD,red,Core PCE Price Index m/m
+Jan 31,8:30am,USD,red,Employment Cost Index q/q

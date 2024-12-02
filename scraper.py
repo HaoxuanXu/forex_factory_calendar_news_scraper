@@ -20,8 +20,7 @@ def scrape(query: str, output_prefix: str):
         chrome_options.add_argument("--disable-dev-shm-usage")
 
         # Use ChromeDriverManager to get the driver path
-        driver_service = Service(ChromeDriverManager().install())
-
+        driver_service = Service("bin/chromedriver")
         # Initialize the WebDriver
         driver = webdriver.Chrome(service=driver_service, options=chrome_options)
     except Exception as e:

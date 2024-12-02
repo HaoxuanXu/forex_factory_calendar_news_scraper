@@ -84,12 +84,7 @@ if __name__ == "__main__":
 
     # Set up Chrome options
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run in headless mode
-    chrome_options.add_argument("--disable-gpu")  # Disable GPU rendering
-    chrome_options.add_argument(
-        "--no-sandbox"
-    )  # Disable sandboxing for CLI environments
-    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
     chrome_options.binary_location = (
         "chrome-linux64/chrome-linux64/chrome"  # Adjust the path
     )

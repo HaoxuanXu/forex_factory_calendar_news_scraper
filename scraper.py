@@ -6,7 +6,7 @@ from utils import reformat_scraped_data
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def scrape(query: str, output_prefix: str, driver):
+def scrape(query: str, output_prefix: str):
 
     try:
         from selenium import webdriver

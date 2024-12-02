@@ -4,17 +4,28 @@ from dateutil.relativedelta import relativedelta
 from config import ALLOWED_ELEMENT_TYPES, ICON_COLOR_MAP
 from utils import reformat_scraped_data
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 def scrape(query: str, output_prefix: str):
     try:
-        from selenium import webdriver
-        from selenium.webdriver.common.by import By
+        # Configure Chrome options
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # Run in headless mode
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
 
-        driver = webdriver.Chrome()
-    except:
-        print("AF: No Chrome webdriver installed")
-        driver = webdriver.Chrome(ChromeDriverManager().install())
+        # Use ChromeDriverManager to get the driver path
+        driver_service = Service(ChromeDriverManager().install())
+
+        # Initialize the WebDriver
+        driver = webdriver.Chrome(service=driver_service, options=chrome_options)
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
     table = driver.find_element(By.CLASS_NAME, "calendar__table")
@@ -60,6 +71,7 @@ def scrape(query: str, output_prefix: str):
             data.append(row_data)
 
     reformat_scraped_data(data, output_prefix)
+    driver.quit()
 
 
 if __name__ == "__main__":

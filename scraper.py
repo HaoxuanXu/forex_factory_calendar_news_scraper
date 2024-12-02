@@ -4,17 +4,11 @@ from dateutil.relativedelta import relativedelta
 from config import ALLOWED_ELEMENT_TYPES, ICON_COLOR_MAP
 from utils import reformat_scraped_data
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 
 
-def scrape(query: str, output_prefix: str):
-    try:
-        from selenium import webdriver
-        from selenium.webdriver.common.by import By
-
-        driver = webdriver.Chrome()
-    except:
-        print("AF: No Chrome webdriver installed")
-        driver = webdriver.Chrome("bin/chromedriver")
+def scrape(query: str, output_prefix: str, driver):
 
     driver.get(f"https://www.forexfactory.com/calendar?month={query}")
     table = driver.find_element(By.CLASS_NAME, "calendar__table")
@@ -63,6 +57,23 @@ def scrape(query: str, output_prefix: str):
 
 
 if __name__ == "__main__":
+
+    from selenium import webdriver
+    from selenium.webdriver.common.by import By
+
+    # Set up Chrome options
+    chrome_options = Options()
+    chrome_options.binary_location = (
+        "chrome-linux64/chrome-linux64/chrome"  # Adjust the path
+    )
+    chrome_options.add_argument("--headless")  # Run without GUI
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
+    driver = webdriver.Chrome(
+        service=Service("bin/chromedriver"), options=chrome_options
+    )
+
     cur_month_date: date = date.today()
     next_month_date: date = cur_month_date + relativedelta(months=1)
 
@@ -73,5 +84,5 @@ if __name__ == "__main__":
         f"{next_month_date.strftime('%b').lower()}.{next_month_date.year}"
     )
 
-    scrape(cur_month_query_str, "current_month")
-    scrape(next_month_query_str, "next_month")
+    scrape(cur_month_query_str, "current_month", driver)
+    scrape(next_month_query_str, "next_month", driver)

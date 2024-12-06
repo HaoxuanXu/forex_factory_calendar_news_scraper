@@ -12,7 +12,7 @@ def scrape(query: str, output_prefix: str):
         from selenium import webdriver
         from selenium.webdriver.common.by import By
 
-        driver = webdriver.Chrome("bin/chromedriver")
+        driver = webdriver.Chrome()
     except:
         print("AF: No Chrome webdriver installed")
         driver = webdriver.Chrome(ChromeDriverManager().install())
